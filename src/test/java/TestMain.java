@@ -2,7 +2,7 @@ import com.kamo.amai.*;
 import com.kamo.amai.control.Option;
 import com.kamo.amai.control.Try;
 
-public class Main {
+public class TestMain {
 
     public static void main(String[] args) {
 //        opt();
@@ -54,7 +54,7 @@ public class Main {
 
     private static void liftAndTuple() {
         Tuple3<String, Integer, Boolean> kamo = Tuple.of("kamo", 18, true);
-        ((Func3<String, Integer, Boolean, Tuple3>) Main::test)
+        ((Func3<String, Integer, Boolean, Tuple3>) TestMain::test)
                 .lift()
                 .tuple()
                 .invoke(kamo)
@@ -62,7 +62,7 @@ public class Main {
     }
 
     private static void curried() {
-        Func3<String, Integer, Boolean, Tuple3> test = Main::test;
+        Func3<String, Integer, Boolean, Tuple3> test = TestMain::test;
         Tuple3 kamo = test.curried().invoke("kamo").invoke(17).invoke(true);
         System.out.println(kamo);
         Func2<Integer, Integer, Integer> fn = (v1, v2) -> v1 + v2;
